@@ -78,19 +78,7 @@ public class BlogController {
         return "board_view"; // board_view.html 파일 연결
     }
 
-    @GetMapping("/board_view/{id}")
-    public String board_view(Model model, @PathVariable Long id) {
-        Optional<Board> list = blogService.findById(id);
-        if (list.isPresent()) {
-            model.addAttribute("boards", list.get());
 
-            // model.addAttribute("board", list.get());
-        } else {
-
-            return "/error_page/article_error";
-        }
-        return "board_view";
-    }
 
     @GetMapping("/board_edit/{id}") // 수정 페이지 연결
     public String board_edit(@PathVariable Long id, Model model) {
